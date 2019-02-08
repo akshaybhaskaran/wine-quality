@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
-#from sklearn.metrics import accuracy_score
+
 
 def red_wine(test_frame):
     # TRAINING THE MODEL - RED WINE
@@ -29,10 +29,30 @@ def red_wine(test_frame):
 
     # Making predictions on new data set - supplied by the user
     prediction = model.predict(test_frame)
-    print("Predicted quality for wine is: " + str(prediction))
+    print("Quality of your Red Wine: " + str(prediction))
     #print(prediction)
     print("[0] -- Poor Wine\n[1] -- Average Wine\n[2] -- Great Wine")
 
 
 def white_wine(test_frame):
-    '''Yet to fill'''
+    white_wine = pd.read_csv('winequality-white.csv', delimiter=";")
+
+    bins = [1, 4, 6, 10]
+    quality_labels = [0, 1, 2]
+    white_wine['quality_categorical'] = pd.cut(white_wine['quality'], bins=bins, labels=quality_labels, include_lowest=True)
+
+    # Input features - all columns, except the two related to quality
+    train_X = white_wine.drop(['quality', 'quality_categorical'], axis=1)
+    # Output feature - categorical quality column
+    train_y = white_wine['quality_categorical']
+
+    model = RandomForestClassifier(max_depth=5, max_leaf_nodes=5, min_samples_leaf=100, n_estimators=50, random_state=1)
+    model.fit(train_X, train_y)
+
+    # Making predictions on new data set - supplied by the user
+    prediction = model.predict(test_frame)
+    print("Quality of your White Wine: " + str(prediction))
+    # print(prediction)
+    print("[0] -- Poor Wine\n[1] -- Average Wine\n[2] -- Great Wine")
+
+
