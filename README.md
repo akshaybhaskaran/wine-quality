@@ -16,6 +16,7 @@ UCI Machine Learning Repository: http://archive.ics.uci.edu/ml/datasets/Wine+Qua
 
 
 
+![alt text](https://github.com/akshaybhaskaran/wine-quality/blob/master/sample.png)
 
 
 
