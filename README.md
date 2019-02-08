@@ -15,7 +15,7 @@ Category[2] --> Great Wine
 UCI Machine Learning Repository: http://archive.ics.uci.edu/ml/datasets/Wine+Quality
 
 
-
+# Sample
 ![alt text](https://github.com/akshaybhaskaran/wine-quality/blob/master/sample.png)
 
 
